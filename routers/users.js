@@ -3,11 +3,11 @@ const usersController = require('../controllers/users')
 const { checkJwt } = require('../middleware')
 const router = express.Router()
 
-router.get('/', usersController.getAllUsers)
+router.get('/',  usersController.getAllUsers)
 
 router.get('/:id', usersController.getUserById)
 
-router.post('/', usersController.createUser)
+router.post("/", checkJwt, usersController.createUser);
 
 router.put('/:id', usersController.updateUserById)
 
